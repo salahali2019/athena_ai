@@ -1,17 +1,36 @@
-# athena_ai
-This repository contains a PyTorch implementation of a deep learning model for image classification. In this README, we provide instructions for models, how to use the model, ,and any limitations to its performance.
+# athena
+This repository focuses  on the project structure rather than the accuracy of code implementation. It contains a PyTorch implementation of a deep learning model for image classification. In this README, we provide instructions for how to use the model, and any limitations to its performance.
 
 # Model
-The model is a convolutional neural network that has been trained on the ImageNet dataset for image classification. The model takes a single input image and produces a vector of probabilities indicating the likelihood that the image belongs to each of the 1000 ImageNet classes.
+This Python script models.py implements a factory design pattern for creating PyTorch classification models of different sizes.
+The script defines four different models:
+
+- `TinyModel`: Input size of 32x32
+- `SmallModel`: Input size of 64x64
+- `LargeModel`: Input size of 128x128
+- `BaseModel`: Input size of 256x256.
+
+Each model is a PyTorch `nn.Module` and has a `predict()` method for making predictions on input data.
+
 
 # How to Use
-To use the model for inference on your own images, follow these steps:
+To use this script, simply import the `ModelFactory` class and use it to create a model:
 
-Clone the repository: git clone https://github.com/your-username/your-repo.git
-Download the pre-trained weights for the model from this link: [insert link here]
-Place the weights file in the models directory of the repository
-Install the required Python packages by running: pip install -r requirements.txt
-Run the inference.py script with the path to your input image as an argument, like this: `python inference.py path
+```python
+from models import ModelFactory
+
+model_factory = ModelFactory()
+
+# create a TinyModel with 5 output classes
+model = model_factory.create('tiny', 5)
+
+# create a LargeModel with 10 output classes
+model = model_factory.create('large', 10)
+```
+# Installation
+1. Clone the repository: `git clone https://github.com/salahali2019/athena_ai.git`
+2. Navigate to the repository directory: `cd athena_ai`
+3. Install the package: `pip install .`
 
 # Limitations
 
